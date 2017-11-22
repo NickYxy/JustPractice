@@ -81,13 +81,14 @@ def wget(host):
         print('%s header > %s' % (host, line.decode('utf-8').rstrip()))
     writer.close()
 
+
 loop2 = asyncio.get_event_loop()
 task3 = [wget(host) for host in ['www.sina.com.cn', 'www.sohu.com', 'www.163.com']]
 loop2.run_until_complete(asyncio.wait(task3))
 loop2.close()
 
 
-#写一个传统的生产消费者模型
+# 写一个传统的生产消费者模型
 def consumer():
     r = ''
     while True:
@@ -96,6 +97,7 @@ def consumer():
             return
         print('[Consumer] Consuming %s...' % n)
         r = '200 ok'
+
 
 def producer(c):
     c.send(None)
@@ -106,6 +108,7 @@ def producer(c):
         r = c.send(n)
         print('[Producer] Consumer return: %s' % r)
     c.close()
+
 
 c = consumer()
 producer(c)
@@ -139,8 +142,12 @@ def consumer():
         # if not n:
         #     print('*' * 10, '3', '*' * 10)
         #     return
+        print('*' * 10, '8', '*' * 10)
         print('[CONSUMER] Consuming %s...' % n)
+        print('*' * 10, '3', '*' * 10)
         r = '200 OK'
+        print('*' * 10, '7', '*' * 10)
+
 
 def produce(c):
     print('*' * 10, '4', '*' * 10)
@@ -151,8 +158,10 @@ def produce(c):
         n = n + 1
         print('[PRODUCER] Producing %s...' % n)
         r = c.send(n)
+        print('*' * 10, '9', '*' * 10)
         print('[PRODUCER] Consumer return: %s' % r)
     c.close()
+
 
 c = consumer()
 print('*' * 10, '6', '*' * 10)

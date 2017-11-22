@@ -253,6 +253,7 @@ def hello_world():
 
 print(hello_world())
 
+
 # yield
 
 # def gen():
@@ -268,15 +269,80 @@ print(hello_world())
 # i = 'ABC'
 # j = tuple(range(1, 3))
 # print(list(gen1(i,j )))
+#
+# import sys
+#
+#
+# class AC():
+#     def __str__(self):
+#         return 'A'
+#
+#
+# ac = AC()
+# print(ac)
+# sys.stdout.write(str(ac))
 
-import sys
+# import os
+#
+# print('Process (%s) start...' % os.getpid())
+# # Only works on Unix/Linux/Mac:
+# pid = os.fork()
+# if pid == 0:
+#     # print('*' * 10, '1', '*'*10)
+#     print('I am child process (%s) and my parent is %s.' % (os.getpid(), os.getppid()))
+# else:
+#     print('*' * 10, '2', '*' * 10)
+#     print('I (%s) just created a child process (%s).' % (os.getpid(), pid))
+
+def my_decorator(func):
+    print("I am an ordinary function")
+
+    def wrapper():
+        print("I am function returned by the decorator")
+        func()
+
+    return wrapper
 
 
-class AC():
-    def __str__(self):
-        return 'A'
+def lazy_function():
+    print("zzzzzzzz")
 
 
-ac = AC()
-print(ac)
-sys.stdout.write(str(ac))
+# decorated_function = my_decorator(lazy_function)
+my_decorator1 = my_decorator(lazy_function)
+my_decorator1()
+
+
+class Integer(object):
+    def __init__(self, name):
+        self.name = name
+
+    def __get__(self, instance, owner):
+        return instance.__dict__[self.name]
+
+    def __set__(self, instance, value):
+        if value < 0:
+            raise ValueError('Negative value not allowed')
+        instance.__dict__[self.name] = value
+
+    def __set_name__(self, owner, name):
+        self.name = name
+
+
+class Movie(object):
+    score = Integer('score')
+    amount = Integer('amount')
+
+
+class Singelton(object):
+    _sin = {}
+
+    def __new__(cls, *args, **kwargs):
+        if not cls._sin.has_key(cls):
+            cls._sin[cls] = object.__new__(cls)
+        return cls._sin[cls]
+
+
+movie = Movie()
+movie.score = 9
+print(movie.score)
