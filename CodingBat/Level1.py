@@ -53,3 +53,36 @@ def front3(str):
     return str[:3] * 3
 
 
+#string_splosion
+'''
+Given a non-empty string like "Code" return a string like "CCoCodCode".
+
+
+string_splosion('Code') → 'CCoCodCode'
+string_splosion('abc') → 'aababc'
+string_splosion('ab') → 'aab'
+'''
+def string_splosion(str):
+  str1 = ''
+  for i in range(len(str)):
+    str1 = str1 + str[:i+1]
+  return str1
+
+#array_count9
+'''
+
+Given an array of ints, return the number of 9's in the array.
+
+
+array_count9([1, 2, 9]) → 1
+array_count9([1, 9, 9]) → 2
+array_count9([1, 9, 9, 3, 9]) → 3
+'''
+def array_count9(nums):
+  count = 0
+  # Standard loop to look at each value
+  for num in nums:
+    if num == 9:
+      count = count + 1
+
+  return count
