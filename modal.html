@@ -1,0 +1,69 @@
+			<div class="modal fade" id="chapter" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    			<div class="modal-dialog">
+					<div class="modal-content">
+            			<div class="modal-header">
+                			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+               				 <h4 class="modal-title" id="myModalLabel">章节信息</h4>
+            			</div>
+            			<div class="modal-body">
+						<div class="panel-body">
+					<form method="POST" class="form-horizontal" enctype=multipart/form-data id="chapter" action="{{ url_for('admin.chapter_new',uuid=m.uuid) }}">
+							<div class="">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">章节名称</label>
+									<div class="col-sm-10">
+										<input type="text" name="chapter_name" class="form-control">
+									</div>
+								</div>
+								<div class="form-group">
+							<label class="col-sm-2 control-label">排序</label>
+							<div class="col-sm-10">
+								<input type="text" name="order" class="form-control" placeholder="请输入章节序号">
+							</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">章节封面</label>
+									<div class="col-md-9">
+									<div class="fileinput fileinput-new" data-provides="fileinput">
+										<div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 200px; height: 150px;"> </div>
+										<div>
+											<span class="btn green btn-primary btn-file">
+												<span class="fileinput-new"> 选择图片 </span>
+												<span class="fileinput-exists"> 重新选择 </span>
+												<input type="file" name="chapter_pic">
+											</span>
+											<a href="javascript:;" class="btn red btn-warning fileinput-exists" data-dismiss="fileinput"> 删除 </a>
+										</div>
+									</div>
+								</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">章节内容</label>
+									<div class="col-md-10">
+										<div class="fileinput fileinput-new" data-provides="fileinput">
+											<div class="input-group input-large">
+												<div class="form-control uneditable-input input-fixed input-medium" data-trigger="fileinput">
+													<i class="fa fa-file fileinput-exists"></i>
+													<span class="fileinput-filename"> </span>
+												</div>
+												<span class="input-group-addon btn default btn-file">
+													<span class="fileinput-new"> 选择文件 </span>
+													<span class="fileinput-exists"> 重新选择 </span>
+													<input type="file" name="content">
+												</span>
+												<a href="javascript:;" class="input-group-addon btn red btn-warning fileinput-exists" data-dismiss="fileinput"> 删除 </a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+							<button type="button" class="btn btn-info center-block" data-dismiss="modal">确定</button>
+							</div>
+					</form>
+						</div>
+						</div>
+        				</div><!-- /.modal-content -->
+    			</div><!-- /.modal-dialog -->
+			</div>
+		</div>
